@@ -1,0 +1,176 @@
+// COSMOS — Planet Data
+
+const PLANETS = [
+  {
+    id: "mercury",
+    name: "Mercury",
+    radius: 4,
+    orbitRadius: 88,
+    speed: 4.15,
+    angle: Math.random() * Math.PI * 2,
+    color: "#9c9c9c",
+    glowColor: "rgba(180,180,180,0.25)",
+    description:
+      "The smallest and swiftest planet — a world of extremes forged in fire and ice. Its thin exosphere offers no shelter from the blazing solar wind.",
+    stats: {
+      diameter: "4,879 km",
+      distance: "57.9M km",
+      moons: "0",
+      day: "58.6 Earth days",
+      year: "88 Earth days",
+      temp: "−180 to 430°C",
+    },
+  },
+  {
+    id: "venus",
+    name: "Venus",
+    radius: 7,
+    orbitRadius: 138,
+    speed: 1.62,
+    angle: Math.random() * Math.PI * 2,
+    color: "#e8c57a",
+    glowColor: "rgba(232,197,122,0.3)",
+    description:
+      "Shrouded in sulfuric acid clouds, Venus burns hotter than Mercury despite being farther from the Sun. A runaway greenhouse effect made it the solar system's inferno twin.",
+    stats: {
+      diameter: "12,104 km",
+      distance: "108.2M km",
+      moons: "0",
+      day: "243 Earth days",
+      year: "225 Earth days",
+      temp: "465°C average",
+    },
+  },
+  {
+    id: "earth",
+    name: "Earth",
+    radius: 8,
+    orbitRadius: 195,
+    speed: 1.0,
+    angle: Math.random() * Math.PI * 2,
+    color: "#4fa3e0",
+    glowColor: "rgba(79,163,224,0.35)",
+    description:
+      "Our pale blue home — the only known harbor of life in the cosmos. Seventy percent ocean, wrapped in a nitrogen-oxygen atmosphere, orbiting at exactly the right distance.",
+    stats: {
+      diameter: "12,756 km",
+      distance: "149.6M km",
+      moons: "1",
+      day: "24 hours",
+      year: "365.25 days",
+      temp: "−88 to 58°C",
+    },
+    hasMoon: true,
+  },
+  {
+    id: "mars",
+    name: "Mars",
+    radius: 5,
+    orbitRadius: 258,
+    speed: 0.532,
+    angle: Math.random() * Math.PI * 2,
+    color: "#c1440e",
+    glowColor: "rgba(193,68,14,0.3)",
+    description:
+      "The Red Planet hosts Olympus Mons — the tallest volcano in the solar system — and Valles Marineris, a canyon that would span a continent. Once Mars had rivers and rain.",
+    stats: {
+      diameter: "6,792 km",
+      distance: "227.9M km",
+      moons: "2",
+      day: "24.6 hours",
+      year: "687 Earth days",
+      temp: "−125 to 20°C",
+    },
+  },
+  {
+    id: "jupiter",
+    name: "Jupiter",
+    radius: 22,
+    orbitRadius: 365,
+    speed: 0.0843,
+    angle: Math.random() * Math.PI * 2,
+    color: "#c88b3a",
+    glowColor: "rgba(200,139,58,0.4)",
+    description:
+      "A world unto itself — Jupiter contains more mass than all other planets combined. Its Great Red Spot is a storm two-thirds the width of Earth that has raged for centuries.",
+    stats: {
+      diameter: "142,984 km",
+      distance: "778.5M km",
+      moons: "95",
+      day: "9.9 hours",
+      year: "11.9 Earth years",
+      temp: "−110°C average",
+    },
+  },
+  {
+    id: "saturn",
+    name: "Saturn",
+    radius: 18,
+    orbitRadius: 450,
+    speed: 0.0339,
+    angle: Math.random() * Math.PI * 2,
+    color: "#e4d191",
+    glowColor: "rgba(228,209,145,0.3)",
+    description:
+      "The jewel of the solar system. Saturn's magnificent rings — composed of ice and rock — extend 282,000 km from the planet yet are remarkably thin, averaging only 10 metres deep.",
+    stats: {
+      diameter: "120,536 km",
+      distance: "1.43B km",
+      moons: "146",
+      day: "10.7 hours",
+      year: "29.5 Earth years",
+      temp: "−140°C average",
+    },
+    hasRings: true,
+  },
+  {
+    id: "uranus",
+    name: "Uranus",
+    radius: 12,
+    orbitRadius: 525,
+    speed: 0.0119,
+    angle: Math.random() * Math.PI * 2,
+    color: "#7de8e8",
+    glowColor: "rgba(125,232,232,0.3)",
+    description:
+      "The ice giant that rolls through space on its side — Uranus has an axial tilt of 98 degrees. Its methane-rich atmosphere gives it a serene, ghostly blue-green hue.",
+    stats: {
+      diameter: "51,118 km",
+      distance: "2.87B km",
+      moons: "28",
+      day: "17.2 hours",
+      year: "84 Earth years",
+      temp: "−195°C average",
+    },
+  },
+  {
+    id: "neptune",
+    name: "Neptune",
+    radius: 11,
+    orbitRadius: 595,
+    speed: 0.00607,
+    angle: Math.random() * Math.PI * 2,
+    color: "#3f54ba",
+    glowColor: "rgba(63,84,186,0.35)",
+    description:
+      "The windiest world in the solar system — Neptune's supersonic storms reach 2,100 km/h. Invisible to the naked eye, it was the first planet discovered through mathematical prediction alone.",
+    stats: {
+      diameter: "49,528 km",
+      distance: "4.5B km",
+      moons: "16",
+      day: "16.1 hours",
+      year: "165 Earth years",
+      temp: "−200°C average",
+    },
+  },
+];
+
+const SUN = {
+  radius: 36,
+};
+
+const ASTEROID_BELT = {
+  innerRadius: 295,
+  outerRadius: 330,
+  count: 300,
+};

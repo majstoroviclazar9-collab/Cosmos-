@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COSMOS — Solar System Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- Canvas -->
+  <canvas id="cosmos-canvas"></canvas>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="header-brand">
+      <span class="brand-title">COSMOS</span>
+      <span class="brand-sub">Solar System Explorer</span>
+    </div>
+    <div class="header-meta">
+      <span id="sim-year">Year 0.0</span>
+      <span class="header-hint">Scroll to zoom</span>
+    </div>
+  </header>
+
+  <!-- Planet nav sidebar -->
+  <nav id="planet-nav"></nav>
+
+  <!-- Hover tooltip -->
+  <div id="planet-tooltip">
+    <span id="tooltip-name"></span>
+  </div>
+
+  <!-- Planet info panel -->
+  <aside id="info-panel">
+    <button id="close-panel" aria-label="Close">✕</button>
+    <div class="panel-body">
+      <div class="panel-preview">
+        <canvas id="planet-preview" width="130" height="130"></canvas>
+      </div>
+      <h2 id="panel-name"></h2>
+      <div class="panel-divider"></div>
+      <p id="panel-description"></p>
+      <div class="stats-label">PLANETARY DATA</div>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-key">Diameter</span>
+          <span class="stat-val" id="stat-diameter"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-key">Distance</span>
+          <span class="stat-val" id="stat-distance"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-key">Moons</span>
+          <span class="stat-val" id="stat-moons"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-key">Day Length</span>
+          <span class="stat-val" id="stat-day"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-key">Year Length</span>
+          <span class="stat-val" id="stat-year"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-key">Temperature</span>
+          <span class="stat-val" id="stat-temp"></span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Speed controls -->
+  <div id="controls">
+    <div class="ctrl-label">ORBITAL SPEED</div>
+    <div class="ctrl-row">
+      <button id="btn-slower" title="Slower">−</button>
+      <input type="range" id="speed-slider" min="0" max="100" value="40" />
+      <button id="btn-faster" title="Faster">+</button>
+      <span id="speed-value">1×</span>
+    </div>
+    <div class="ctrl-hint">Click any planet to explore · Scroll to zoom</div>
+  </div>
+
+  <!-- Zoom hint -->
+  <div class="zoom-hint">⊕ SCROLL TO ZOOM</div>
+
+</div><!-- #app -->
+
+<script src="js/data.js"></script>
+<script src="js/starfield.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/ui.js"></script>
+<script>
+  // Build planet nav after data is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('planet-nav');
+    PLANETS.forEach(p => {
+      const item = document.createElement('div');
+      item.className = 'nav-item';
+      item.innerHTML = `
+        <div class="nav-dot" style="background:${p.color}"></div>
+        <span class="nav-name">${p.name}</span>
+      `;
+      item.addEventListener('click', () => {
+        // Trigger UI panel via custom event
+        document.dispatchEvent(new CustomEvent('cosmos:selectPlanet', { detail: p }));
+      });
+      nav.appendChild(item);
+    });
+  });
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
