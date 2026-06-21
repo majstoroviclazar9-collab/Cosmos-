@@ -1,2 +1,2 @@
 # Cosmos-
-cosmos-solarsystem-779621
+cosmos-solarsystem-779621.netlify.app
